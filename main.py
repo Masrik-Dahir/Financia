@@ -1,11 +1,33 @@
-def compound_value(amount, interest, year, dca, growth):
-    times=1 + growth
-    if year == 0:
+def compound_value(amount, interest, month, dca, growth):
+    if month == 1:
         return amount
-    amount = amount*times+amount*interest*times+dca
-    return compound_value(amount, interest, year-1,dca, growth)
+    else:
+        amount = amount * (1 + growth)
+        # print(amount)
+        # print(amount * interest)
+    amount = amount + amount * interest + dca
 
-def hodl(dca, interest, year, growth):
+    return compound_value(amount, interest, month - 1, dca, growth)
+
+
+def dca_year(dca, interest, year, growth):
     return compound_value(dca, interest, year, dca, growth)
 
-print(hodl(dca=150,interest=0.062,year=20,growth=.1))
+
+def dca_month(dca, interest, month, growth):
+    interest = interest * (1 / 12)
+    growth = growth * (1 / 12)
+    return compound_value(dca, interest, month, dca, growth)
+
+
+def invest(principle, interest, month, growth):
+    interest = interest * (1 / 12)
+    growth = growth * (1 / 12)
+    return compound_value(principle, interest, month, 0, growth)
+
+
+print(dca_month())
+print(dca_month())
+
+print(invest())
+print(invest())
