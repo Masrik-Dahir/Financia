@@ -26,5 +26,5 @@ def invest(principle, interest, month, growth):
     return compound_value(principle, interest, month, 0, growth)
 
 
-print(dca_month(1000, .1, 12, 0.5))
-print(invest(1000, .1, 12, 0.5))
+# print(dca_month(1000, .1, 12, 0.5))
+# print(invest(1000, .1, 12, 0.5))
